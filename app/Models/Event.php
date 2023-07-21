@@ -15,8 +15,6 @@ class Event extends Model
         'frame_url',
     ];
 
-    public $timestamps = false;
-
     public function camera()
     {
         return $this->belongsTo(Camera::class);

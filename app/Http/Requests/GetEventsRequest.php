@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventCreateRequest extends FormRequest
+class GetEventsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,9 +22,8 @@ class EventCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'camera_id' => 'required|int',
-            'event_type_id' => 'required|int',
-            'frame_url' => 'required|string',
+            'date_from' => 'required|timestamp|before:date_to',
+            'date_to' => 'required|timestamp|after:date_from'
         ];
     }
 }

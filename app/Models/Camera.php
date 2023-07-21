@@ -17,8 +17,6 @@ class Camera extends Model
         'lat',
     ];
 
-    public $timestamps = false;
-
     public function events()
     {
         return $this->hasMany(Event::class);

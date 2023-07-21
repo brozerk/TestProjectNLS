@@ -8,14 +8,8 @@ use Illuminate\Http\Request;
 
 class CameraController extends Controller
 {
-    public function createCamera(CameraCreateRequest $request)
+    public function createCamera(CameraCreateRequest $request): Camera
     {
-        return Camera::create([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'address' => $request['address'],
-            'long' => $request['long'],
-            'lat' => $request['lat'],
-        ]);
+        return Camera::create($request->all());
     }
 }

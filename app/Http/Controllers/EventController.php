@@ -13,25 +13,17 @@ class EventController extends Controller
 {
     public function createEvent(EventCreateRequest $request): Event
     {
-        return Event::create([
-            'camera_id' => $request['camera_id'],
-            'event_type_id' => $request['event_type_id'],
-            'frame_url' => $request['frame_url'],
-        ]);
+        return Event::create($request->all());
     }
 
-    public function getEvents(Request $request)
+    public function getEvents()
     {
-        $date_from = $request->input('date_from');
-        $date_to = $request->input('date_to');
+        $dateFrom = request('date_from');
+        $dateTo = request('date_to');
 
-        if ($date_from > $date_to) {
-            return 'dates are invalid';
-        }
-
-        return Event::where('creationDate', '>=', $date_from)->
-            where('creationDate', '<=', $date_to)->
-            get();
+        return Event::where('created_at', '>=', $dateFrom)
+            ->where('created_at', '<=', $dateTo)
+            ->get();
     }
 
     public function getEvent(int $id)

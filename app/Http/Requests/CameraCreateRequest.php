@@ -22,10 +22,11 @@ class CameraCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string',
+            'name' => 'required|string',
             'description' => 'string',
-            'address' => 'string',
-            'coordinates' => 'string'
+            'address' => 'required|string',
+            'long' => 'required|numeric',
+            'lat' => 'required|numeric'
         ];
     }
 }

@@ -35,12 +35,7 @@ class EventTest extends TestCase
     /** @test  */
     public function eventsGettingTest(): void
     {
-        $data = [
-            'date_from' => '2023-07-21 14:00:41',
-            'date_to' => '2023-08-21 14:00:41'
-        ];
-
-        $response = $this->get('api/events', $data);
+        $response = $this->get('api/events?date_from=2023-07-21&date_to=2023-08-21');
 
         $response->assertStatus(200);
     }

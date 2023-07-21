@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('camera_id')->references('id')->on('cameras')->onDelete('cascade');
             $table->foreignId('event_type_id')->references('id')->on('event_types')->onDelete('cascade');
             $table->string('frame_url');
-            $table->timestamp('creationDate')->nullable();
-            $table->timestamp('deletionDate')->nullable();
+            $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
