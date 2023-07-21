@@ -11,7 +11,7 @@ class GetEventsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,8 +22,8 @@ class GetEventsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date_from' => 'required|timestamp|before:date_to',
-            'date_to' => 'required|timestamp|after:date_from'
+            'date_from' => 'required|date|before:date_to',
+            'date_to' => 'required|date|after:date_from'
         ];
     }
 }
